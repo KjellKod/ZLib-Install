@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 2.8.2)
+
+project(zlib-download NONE)
+
+include(ExternalProject)
+ExternalProject_Add(
+  googletest
+  URL 					http://zlib.net/zlib-1.2.11.tar.gz
+  SOURCE_DIR 			"${CMAKE_BINARY_DIR}/zlib-src"
+  BINARY_DIR 			"${CMAKE_BINARY_DIR}/zlib-build"
+  CONFIGURE_COMMAND 	""
+  BUILD_COMMAND 		""
+  INSTALL_COMMAND 		""
+  TEST_COMMAND "")
