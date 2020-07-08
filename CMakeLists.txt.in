@@ -4,11 +4,17 @@ project(zlib-download NONE)
 
 include(ExternalProject)
 ExternalProject_Add(
-  googletest
+  zlibinstall
   URL 					http://zlib.net/zlib-1.2.11.tar.gz
   SOURCE_DIR 			"${CMAKE_BINARY_DIR}/zlib-src"
   BINARY_DIR 			"${CMAKE_BINARY_DIR}/zlib-build"
-  CONFIGURE_COMMAND 	""
-  BUILD_COMMAND 		""
-  INSTALL_COMMAND 		""
-  TEST_COMMAND "")
+  CMAKE_ARGS            -DCMAKE_PREFIX_PATH=c:\\Libraries -DCMAKE_INSTALL_PREFIX=c:\\Libraries ..
+  INSTALL_COMMAND 		"-DCMAKE_INSTALL_PREFIX=c:\\Libraries")
+
+curl http://zlib.net/zlib-1.2.11.tar.gz -o zlib.tar.gz
+tar xvzf zlib.tar.gz
+cd zlib-1.2.11/
+mkdir build
+cd build 
+cmake -DCMAKE_PREFIX_PATH=c:\\Libraries -DCMAKE_INSTALL_PREFIX=c:\\Libraries ..
+cmake --build . --target INSTALL --config Release
